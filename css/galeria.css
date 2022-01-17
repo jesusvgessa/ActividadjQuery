@@ -1,0 +1,57 @@
+#cuadroPrincipal {
+    text-align: center;
+    margin: 2em auto;
+    background-image: url('../img/gato/fondo.jpg');
+    width: 70%;
+    border-radius: 3em;
+    height: 27em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1em 1.2em rgba(0, 0, 0, 0.1);
+}
+
+#cuadroPrincipal img {
+    width: 20em;
+}
+
+.lista {
+    display: flex;
+    justify-content: center;
+    background: orange;
+    border-radius: 2em;
+    width: 80%;
+    min-height: 12em;
+    margin: 0 auto;
+    box-shadow: 0 1em 1.2em rgba(0, 0, 0, 0.1);
+}
+
+.lista ul {
+    list-style: none;
+    display: flex;
+}
+
+.lista li {
+    display: inline-block;
+    position: relative;
+    margin-left: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lista img {
+    width: 8em;
+}
+
+select{
+    width: 8em;
+    text-align: center;
+    height: 2em;
+    font-style: italic;
+    font-size: large;
+    border-radius: 0.5em;
+    border: solid white 0.1em;
+}

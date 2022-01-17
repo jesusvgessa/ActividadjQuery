@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/form.css">
+    <link rel="stylesheet" href="../../css/tablero.css">
+    <title>P1</title>
+</head>
+
+<body>
+    <header>
+        <p>TRES EN RAYA MULTIJUGADOR</p>
+        <a href="../index.html"><i class="fas fa-undo"></i></a>
+    </header>
+    <section>
+        <article class="formulario">
+
+            <form id="formJug1">
+                <label for="jugador1">Jugador 1: </label>
+                <input type="text" id="nombreJug1" placeholder="Nombre">
+                <input type="submit" id="btnJug1" value="Aceptar">
+                <div id="errorJug1"></div>
+            </form>
+
+            <form id="avatarJug1">
+                <ul>
+                    <li><img src="../../img/dani.jpg" alt="Cara de Dani"></li>
+                    <li><img src="../../img/antonio.jpg" alt="Cara de Antonio"></li>
+                    <li><img src="../../img/javi.jpg" alt="Cara de Javi"></li>
+                </ul>
+                <ul class="listaInput">
+                    <li><input type="radio" value="dani" name="avatar1" id="avatar1" checked></li>
+                    <li><input type="radio" value="antonio" name="avatar1" id="avatar1"></li>
+                    <li><input type="radio" value="javi" name="avatar1" id="avatar1"></li>
+                </ul>
+                <input type="submit" id="btnAva1" value="Aceptar">
+                <div id="errorAva1"></div>
+            </form>
+
+            <form id="formJug2">
+                <label for="jugador2">Jugador 2: </label>
+                <input type="text" id="nombreJug2" placeholder="Nombre">
+                <input type="submit" id="btnJug2" value="Aceptar">
+                <div id="errorJug2"></div>
+            </form>
+
+            <form id="avatarJug2">
+                <ul class="listaAvatares2">
+                    <li><img src="../../img/jesus.jpg" alt="Cara de Jesu"></li>
+                    <li><img src="../../img/mariano.jpg" alt="Cara de Mariano"></li>
+                    <li><img src="../../img/zapatero.jpg" alt="Cara de Zapatero"></li>
+                </ul>
+                <ul class="listaInput">
+                    <li><input type="radio" value="jesus" name="avatar2" id="avatar2" checked></li>
+                    <li><input type="radio" value="mariano" name="avatar2" id="avatar2"></li>
+                    <li><input type="radio" value="zapatero" name="avatar2" id="avatar2"></li>
+                </ul>
+                <input type="submit" id="btnAva2" value="Aceptar">
+                <div id="errorAva1"></div>
+            </form>
+        </article>
+
+        <article id="juegoCompleto">
+            <div class="marcador">
+                <div class="marcadorJug1">
+                    <h3 id="jug1"></h3>
+                    <p id="wJug1">0</p>
+                </div>
+                <div class="marcadorJug2">
+                    <h3 id="jug2"></h3>
+                    <p id="wJug2">0</p>
+                </div>
+            </div>
+            <div id="turnoJug">
+                <h4 id="turnoJug1"></h4>
+                <h4 id="turnoJug2"></h4>
+            </div>
+            <table id="juego">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div id="finPartida">
+                <div id="resultado"></div>
+                <div class="opt">
+                    <a id="volverMenu" href="../index.html">VOLVER</a>
+                    <button type="reset" id="otraPartida">REVANCHA</button>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <script src="../../js/form.js"></script>
+    <script src="../../js/juego.js"></script>
+</body>
+
+</html>
