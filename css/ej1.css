@@ -13,7 +13,11 @@ h3 {
     margin: 1em;
 }
 
-ul li {
-    margin: 1em;
-    list-style: none;
+ul{
+    list-style-image: url("../img/rombo.jpg");
+}
+
+ul li{
+    margin-left: 4em;
+    margin-bottom: 2em;
 }
