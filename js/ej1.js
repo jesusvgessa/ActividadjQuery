@@ -3,9 +3,8 @@ $(function() {
     $("p").hide();
 
     //Animaciones cuando entro en el elemento
-    $("li").mouseover(function(event) {
-        //Paro la ejecucion y limpio la cola
-        $(this).stop();
+    $("li").mouseover(function() {
+        //Limpio la cola
         $(this).clearQueue();
         $(this).children("p").show(1000);
         //Cojo el elemento que tiene el puntero encima
@@ -15,7 +14,7 @@ $(function() {
     });
 
     //Animaciones cuando salgo del elemento
-    $("li").mouseout(function(event) {
+    $("li").mouseout(function() {
         $(this).children("p").hide(1000);
         //Le pongo en su posicion inicial
         $(this).animate({
