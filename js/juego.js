@@ -1,115 +1,103 @@
-/* Cojo todas las celdas de la tabla, que serian las casillas
-y le añado el evento onClick, que cambiara el fondo de la casilla */
-document.querySelectorAll("td").forEach((obj, i) => obj.addEventListener("click", (e) => celdaMarcada(e, i)));
-
-//Variables:
+//Variables globales
 var turno = 0; //Contador de turnos
-var tablero = new Array(); //Array de las celdas
 
-//Reinicio marcador
-document.getElementById("wJug1").value = 0;
-document.getElementById("wJug2").value = 0;
+$(function() {
+    //Reinicio los marcadores
+    $("#wJug1").value = 0;
+    $("#wJug2").value = 0;
 
-//Le asigno a cada celda un valor false, para controlar si esta marcada la celda o no
-for (var i = 0; i < 9; i++) {
-    tablero.push("");
-} //Fin Para
-var turnoJug1 = document.getElementById("turnoJug1");
-var turnoJug2 = document.getElementById("turnoJug2");
-var finPartida = document.getElementById("finPartida");
+    /* Cojo todas las celdas de la tabla, que serian las casillas
+    y le añado el evento onClick, que cambiara el fondo de la casilla */
+    $("table td").each(function() {
+        $(this).on("click", function() {
+            //Compruebo si la celda tiene imagen
+            if ($(this).children("img").length == 0) {
+                //Depende de si es turno par o impar
+                if (turno % 2 == 0) {
+                    //Añado la foto
+                    $(this).append("<img src='../../img/" + $('input:radio[name=avatar1]:checked').val() + ".jpg' style='opacity:0;width:0'>");
+                    $(this).children().animate({
+                        opacity: "1",
+                        width: "1.8em"
+                    }, 1000);
+                    $("#turnoJug1").css("background", "white");
+                    $("#turnoJug2").css("background", "#333");
+                } else {
+                    $(this).append("<img src='../../img/" + $('input:radio[name=avatar2]:checked').val() + ".jpg' style='opacity:0;width:0'>");
+                    $(this).children().animate({
+                        opacity: "1",
+                        width: "1.8em"
+                    }, 1000);
+                    $("#turnoJug2").css("background", "white");
+                    $("#turnoJug1").css("background", "#333");
+                } //Fin Si
 
-var celdaMarcada = (e, pos) => {
-    //Almaceno la celda pulsada
-    var celda = e.target;
-    if (turno < 9 && tablero[pos] == "") {
-        turno++;
-        //Si el turno es impar, es el turno del jugador 1.
-        //Si no, seria turno del jugador 2
-        celda.style.backgroundImage = turno % 2 ? "url(../../img/" + avatar1 + ".jpg)" : "url(../../img/" + avatar2 + ".jpg)";
-        tablero[pos] = turno % 2 ? "jug1" : "jug2";
+                //Compruebo si termina la partida
+                if (victoria()) {
+                    $("#finPartida").show();
+                    if (turno % 2 == 0) {
+                        $("#resultado").text("Enhorabuena. Gana " + $('input:radio[name=avatar1]:checked').val());
+                    } else {
+                        $("#resultado").text("Enhorabuena. Gana " + $('input:radio[name=avatar2]:checked').val());
+                    }
+                    $("#resultado").css("background", "green");
+                } else if (turno > 8) {
+                    $("#finPartida").show();
+                    $("#resultado").text("EMPATE");
+                    $("#resultado").css("background", "grey");
+                }
 
-        //Cambio en el contenedor de turnos, para reflejar a quien le toca
-        if (turno % 2) {
-            turnoJug1.style.background = "white";
-            turnoJug2.style.background = "#333";
+                //Sumo turno
+                turno++;
+            } //Fin Si
+        });
+    });
+
+    function victoria() {
+        //Compruebo las casillas, comprobando el tres en raya, y si el primero de estos esta definido.
+        if ($("table td").eq(0).children("img").attr("src") == $("table td").eq(1).children("img").attr("src") && $("table td").eq(0).children("img").attr("src") == $("table td").eq(2).children("img").attr("src") && $("table td").eq(0).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(3).children("img").attr("src") == $("table td").eq(4).children("img").attr("src") && $("table td").eq(3).children("img").attr("src") == $("table td").eq(5).children("img").attr("src") && $("table td").eq(3).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(6).children("img").attr("src") == $("table td").eq(7).children("img").attr("src") && $("table td").eq(6).children("img").attr("src") == $("table td").eq(8).children("img").attr("src") && $("table td").eq(6).children("img").attr("src")) {
+            return true;
+        } else if ($("table td").eq(0).children("img").attr("src") == $("table td").eq(3).children("img").attr("src") && $("table td").eq(0).children("img").attr("src") == $("table td").eq(6).children("img").attr("src") && $("table td").eq(0).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(1).children("img").attr("src") == $("table td").eq(4).children("img").attr("src") && $("table td").eq(1).children("img").attr("src") == $("table td").eq(7).children("img").attr("src") && $("table td").eq(1).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(2).children("img").attr("src") == $("table td").eq(5).children("img").attr("src") && $("table td").eq(2).children("img").attr("src") == $("table td").eq(8).children("img").attr("src") && $("table td").eq(2).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(0).children("img").attr("src") == $("table td").eq(4).children("img").attr("src") && $("table td").eq(0).children("img").attr("src") == $("table td").eq(8).children("img").attr("src") && $("table td").eq(0).children("img").attr("src")) {
+            return true;
+        } else if (
+            $("table td").eq(2).children("img").attr("src") == $("table td").eq(4).children("img").attr("src") && $("table td").eq(2).children("img").attr("src") == $("table td").eq(6).children("img").attr("src") && $("table td").eq(2).children("img").attr("src")) {
+            return true;
         } else {
-            turnoJug2.style.background = "white";
-            turnoJug1.style.background = "#333";
+            return false;
+        } //Fin Si
+    }
+
+    //Le doy la funcion de resetear al boton revancha
+    $("#otraPartida").on("click", function() {
+        //Cambio marcador:
+        if ((turno - 1) % 2 == 0) {
+            $("#wJug1").text(Number($("#wJug1").text()) + 1);
+        } else {
+            $("#wJug2").text(Number($("#wJug2").text()) + 1);
         }
 
-        if (victoria()) {
-            finPartida.style.display = "block";
-            var ganador = turno % 2 ? jugador1 : jugador2;
-            resultado.innerHTML = "Enhorabuena. Gana " + ganador;
-            resultado.style.background = "green";
-            //Sumar en el marcador la victoria al jugador correspondiente
-            // Lo guardamos en localStorage, pasándolo a cadena con JSON
-            //Para guardarlos, le guardo la longitud del localstorage para ir acumulando
-            if (turno % 2) {
-                document.getElementById("wJug1").value++;
-                var num = String(localStorage.length + 1);
-                var nombre = String(jugador1);
-                var object = { num: nombre };
-                localStorage.setItem('key', JSON.stringify(object));
-            } else {
-                document.getElementById("wJug2").value++;
-                var num = String(localStorage.length + 1);
-                var nombre = String(jugador2);
-                var object = { num: nombre };
-                localStorage.setItem('key', JSON.stringify(object));
-            } //Fin Si
-        } //Fin Si   
-    }
-    if (turno == 9) {
-        finPartida.style.display = "block";
-        resultado.innerHTML = "EMPATE";
-        resultado.style.background = "grey";
-    } //Fin Si
-}
+        //Vuelvo a ocultar el fin de partida
+        $("#finPartida").hide();
 
-function victoria() {
-    //Compruebo las casillas, comprobando el tres en raya, y si el primero de estos esta definido.
-    if (tablero[0] == tablero[1] && tablero[0] == tablero[2] && tablero[0]) {
-        return true;
-    } else if (tablero[3] == tablero[4] && tablero[3] == tablero[5] && tablero[3]) {
-        return true;
-    } else if (tablero[6] == tablero[7] && tablero[6] == tablero[8] && tablero[6]) {
-        return true;
-    } else if (tablero[0] == tablero[3] && tablero[0] == tablero[6] && tablero[0]) {
-        return true;
-    } else if (tablero[1] == tablero[4] && tablero[1] == tablero[7] && tablero[1]) {
-        return true;
-    } else if (tablero[2] == tablero[5] && tablero[2] == tablero[8] && tablero[2]) {
-        return true;
-    } else if (tablero[0] == tablero[4] && tablero[0] == tablero[8] && tablero[0]) {
-        return true;
-    } else if (tablero[2] == tablero[4] && tablero[2] == tablero[6] && tablero[2]) {
-        return true;
-    } else {
-        return false;
-    } //Fin Si
-}
-
-//Le doy la funcion de resetear al boton revancha
-document.getElementById("otraPartida").addEventListener("click", function() {
-    //Cambio marcador:
-    document.getElementById("wJug1").innerHTML = document.getElementById("wJug1").value;
-    document.getElementById("wJug2").innerHTML = document.getElementById("wJug2").value;
-
-    //Vuelvo a ocultar el fin de partida
-    finPartida.style.display = "none";
-
-    //Reinicio los marcadores de las celdas y las variables
-    var turno = 0;
-    var tablero = new Array();
-    for (var i = 0; i < 9; i++) {
-        tablero.push("");
-    } //Fin Para
-
-    //Recojo en un array todas las celdas, para borrarles el background
-    var fondos = document.querySelectorAll("td");
-    console.log(fondos);
-    for (var i = 0; i < fondos.length; i++) {
-        fondos[i].style.backgroundImage = "none";
-    } //Fin Para
+        //Reinicio los marcadores de las celdas y las variables
+        turno = 0;
+        $("table td").each(function() {
+            $(this).children().remove();
+        });
+    });
 });

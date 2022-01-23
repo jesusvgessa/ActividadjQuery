@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../js/juego.js"></script>
+
+    <!-- cs -->
     <link rel="stylesheet" href="../../fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/form.css">
@@ -22,14 +28,14 @@
 
             <form id="formJug1">
                 <label for="jugador1">Jugador 1: </label>
-                <input type="text" id="nombreJug1" placeholder="Nombre">
+                <input type="text" name="nombreJug1" id="nombreJug1" placeholder="Nombre">
                 <input type="submit" id="btnJug1" value="Aceptar">
                 <div id="errorJug1"></div>
             </form>
 
             <form id="avatarJug1">
                 <ul>
-                    <li><img src="../../img/dani.jpg" alt="Cara de Dani"></li>
+                    <li><img src="../../img/dani.jpg" alt="Cara de Dani" checked></li>
                     <li><img src="../../img/antonio.jpg" alt="Cara de Antonio"></li>
                     <li><img src="../../img/javi.jpg" alt="Cara de Javi"></li>
                 </ul>
@@ -44,7 +50,7 @@
 
             <form id="formJug2">
                 <label for="jugador2">Jugador 2: </label>
-                <input type="text" id="nombreJug2" placeholder="Nombre">
+                <input type="text" name="nombreJug2" id="nombreJug2" placeholder="Nombre">
                 <input type="submit" id="btnJug2" value="Aceptar">
                 <div id="errorJug2"></div>
             </form>
@@ -108,7 +114,6 @@
     </section>
 
     <script src="../../js/form.js"></script>
-    <script src="../../js/juego.js"></script>
 </body>
 
 </html>

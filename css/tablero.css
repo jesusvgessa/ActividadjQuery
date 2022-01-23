@@ -46,6 +46,7 @@
 
 td {
     width: 2em;
+    padding: 0.1em;
     height: 2em;
     border: 0.2em solid orange;
     font-size: 3em;
