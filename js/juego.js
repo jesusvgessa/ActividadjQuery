@@ -41,7 +41,7 @@ $(function() {
                         $("#resultado").text("Enhorabuena. Gana " + $('input:radio[name=avatar2]:checked').val());
                     }
                     $("#resultado").css("background", "green");
-                } else if (turno > 8) {
+                } else if (turno > 7) {
                     $("#finPartida").show();
                     $("#resultado").text("EMPATE");
                     $("#resultado").css("background", "grey");
