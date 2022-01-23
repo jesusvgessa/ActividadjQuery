@@ -4,15 +4,15 @@ var imagenPrincipal = document.getElementById("principal");
 //Array de la lista de imagenes de gatos 
 var lista = document.querySelectorAll("li>img");
 
-//Les doy un evendo onClick a todas
-for (var i = 0; i < lista.length; i++) {
-    lista[i].addEventListener("mousemove", cambioPrincipal);
-} //Fin Para
+// //Les doy un evendo onMove a todas
+// for (var i = 0; i < lista.length; i++) {
+//     lista[i].addEventListener("mousemove", cambioPrincipal);
+// } //Fin Para
 
-//Funcion para cambiar la imagen principal
-function cambioPrincipal() {
-    imagenPrincipal.src = this.src;
-}
+// //Funcion para cambiar la imagen principal
+// function cambioPrincipal() {
+//     imagenPrincipal.src = this.src;
+// }
 
 //Cambiar tematica
 //Cojo la etiqueta select, y le añado un evento onChange
