@@ -1,0 +1,3 @@
+Optimiza tu código de forma fácil y rápida, con menos líneas de código.
+Queda todo mas legible.
+Con los métodos que ya existen implementados, con javascript quedarían funciones mucho más largas. 
