@@ -1,11 +1,12 @@
-$(document).ready(function() {
+$(function() {
     //Cojo todos los parrafos de los elementos de la lista
     $("p").hide();
 
     //Animaciones cuando entro en el elemento
     $("li").mouseover(function(event) {
-        // $(this).stop();
-        // $(this).clearQueue();
+        //Paro la ejecucion y limpio la cola
+        $(this).stop();
+        $(this).clearQueue();
         $(this).children("p").show(1000);
         //Cojo el elemento que tiene el puntero encima
         $(this).animate({
